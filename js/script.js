@@ -1,48 +1,15 @@
-// Animate linear skill progress bars
 document.addEventListener('DOMContentLoaded', function() {
-  function animateLinearBar(bar, percent) {
-    let current = 0;
-    const progress = bar;
-    const percentLabel = bar.querySelector('.percent');
-    function step() {
-      if (current <= percent) {
-        progress.style.width = current + '%';
-        percentLabel.textContent = current + '%';
-        current++;
-        setTimeout(step, 10);
-      } else {
-        progress.style.width = percent + '%';
-        percentLabel.textContent = percent + '%';
-      }
-    }
-    step();
-  }
-
-  const observer = new window.IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const bar = entry.target;
-        const percent = parseInt(bar.getAttribute('data-percentage'), 10);
-        animateLinearBar(bar, percent);
-        obs.unobserve(bar);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('.linear-progress').forEach(bar => {
-    observer.observe(bar);
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    once: true
   });
-});
-// script.js
-   AOS.init({
-      duration: 800,
-      once: true
-    });
 
-    // Mobile menu toggle
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+  // Mobile menu toggle (with null checks)
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
 
+  if (menuBtn && navLinks) {
     menuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('active');
       menuBtn.innerHTML = navLinks.classList.contains('active')
@@ -57,9 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
         menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });
+  }
 
-    // Typewriter effect
-    const typewriterElement = document.getElementById('typewriter');
+  // Typewriter effect (with null check)
+  const typewriterElement = document.getElementById('typewriter');
+
+  if (typewriterElement) {
     const phrases = [
       "Junior Frontend Developer",
       "Passionate about web technologies",
@@ -69,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let isEnd = false;
 
     function typeWriter() {
       const currentPhrase = phrases[phraseIndex];
@@ -83,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       if (!isDeleting && charIndex === currentPhrase.length) {
-        isEnd = true;
         isDeleting = true;
         setTimeout(typeWriter, 1500);
       } else if (isDeleting && charIndex === 0) {
@@ -98,125 +66,127 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Start the typewriter effect
     setTimeout(typeWriter, 1000);
+  }
 
-    // Initialize particles.js
-    window.onload = function() {
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 45,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#F0F4F8" /* Mengubah warna partikel menjadi primary-light */
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
-                },
-                "opacity": {
-                    "value": 0.8,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 10,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 220,
-                    "color": "#F0F4F8", /* Warna yang cocok dengan partikel (primary-light) */
-                    "opacity": 0.4,
-                    "width": 1.8
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 200,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
+  // Initialize particles.js (using addEventListener)
+  window.addEventListener('load', function() {
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 45,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#F0F4F8"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.8,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 10,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 220,
+          "color": "#F0F4F8",
+          "opacity": 0.4,
+          "width": 1.8
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 200,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#') && href.length > 1) {
+        e.preventDefault();
+        document.querySelector(href).scrollIntoView({
+          behavior: 'smooth'
         });
-    };
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-         const href = this.getAttribute('href');
-    if (href.startsWith('#') && href.length > 1) { 
-      e.preventDefault();
-      document.querySelector(href).scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
+      }
+    });
   });
 });
