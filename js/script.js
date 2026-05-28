@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize AOS
-  AOS.init({
-    duration: 800,
-    once: true
-  });
+  // Initialize AOS safely (prevents halting execution if CDN fails or is offline)
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  } else {
+    console.warn('AOS library is not defined. Animations skipped.');
+  }
 
   // Mobile menu toggle (with null checks)
   const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -90,9 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(typeWriter, 1000);
   }
 
-  // Initialize particles.js (using addEventListener)
+  // Initialize particles.js safely (using addEventListener)
   window.addEventListener('load', function() {
-    particlesJS("particles-js", {
+    if (typeof particlesJS !== 'undefined') {
+      particlesJS("particles-js", {
       "particles": {
         "number": {
           "value": 45,
@@ -197,6 +202,9 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       "retina_detect": true
     });
+    } else {
+      console.warn('particlesJS is not defined. Background particles skipped.');
+    }
   });
 
   // Smooth scrolling for anchor links
