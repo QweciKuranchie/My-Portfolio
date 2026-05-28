@@ -9,20 +9,42 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
 
+  function closeMenu() {
+    navLinks.classList.remove('active');
+    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  function openMenu() {
+    navLinks.classList.add('active');
+    menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
   if (menuBtn && navLinks) {
+    menuBtn.setAttribute('aria-expanded', 'false');
+
     menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      menuBtn.innerHTML = navLinks.classList.contains('active')
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
+      if (navLinks.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
 
     // Close mobile menu when clicking a link
     document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        closeMenu();
+        menuBtn.focus();
+      }
     });
   }
 
