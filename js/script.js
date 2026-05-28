@@ -31,10 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (typewriterElement) {
     const phrases = [
-      "Junior Frontend Developer",
-      "Passionate about web technologies",
-      "Quick learner",
-      "Team player"
+      "Software Engineer",
+      "Full Stack Developer",
+      "Cloud Specialist",
+      "Product-Minded Engineer"
     ];
     let phraseIndex = 0;
     let charIndex = 0;

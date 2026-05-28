@@ -942,9 +942,8 @@ footer {
     padding: 1rem;
   }
 
-  .cert-img {
-    width: 60px;
-    height: 60px;
+  .cert-icon-fa {
+    font-size: 1.8rem;
   }
 
   .form-control {
