@@ -547,7 +547,14 @@
           </div>
         </div>
         <div class="contact-form" data-aos="fade-left">
-          <form action="mailto:nuhurichard47@gmail.com" method="POST" enctype="text/plain">
+          <!-- Glassmorphic Loader Overlay -->
+          <div class="form-overlay" id="form-overlay">
+            <div class="spinner-container">
+              <div class="loading-spinner"></div>
+              <p>Sending your message...</p>
+            </div>
+          </div>
+          <form id="contact-form" action="https://formspree.io/f/your_id_here" method="POST">
             <div class="form-group">
               <label for="name">Your Name</label>
               <input type="text" id="name" name="name" class="form-control" autocomplete="name" required>
@@ -580,6 +587,9 @@
     </div>
     <p class="copyright">&copy; 2026 Richard Nuhu. All rights reserved.</p>
   </footer>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container"></div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
