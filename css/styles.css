@@ -381,9 +381,132 @@ h2::after {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  min-width: 250px;
-  flex: 1 1 300px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.3s ease;
+  z-index: 1;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-light);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cert-card:hover::before {
+  width: 8px;
+}
+
+/* 1. Security / CISSP Card Glow */
+.cert-premium-security {
+  border-color: rgba(243, 156, 18, 0.4); /* Gold */
+  background: linear-gradient(135deg, rgba(26, 32, 44, 0.7) 0%, rgba(38, 47, 65, 0.8) 100%);
+}
+
+.cert-premium-security::before {
+  background: #F39C12; /* Gold */
+}
+
+.cert-premium-security:hover {
+  border-color: #F39C12;
+  box-shadow: 0 10px 25px rgba(243, 156, 18, 0.25);
+}
+
+.cert-premium-security .cert-icon-fa {
+  color: #F39C12;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+/* 2. AI Card Glow */
+.cert-ai {
+  border-color: rgba(163, 0, 217, 0.4); /* Purple */
+  background: linear-gradient(135deg, rgba(26, 32, 44, 0.7) 0%, rgba(45, 30, 65, 0.8) 100%);
+}
+
+.cert-ai::before {
+  background: #A300D9; /* Deep Purple */
+}
+
+.cert-ai:hover {
+  border-color: #A300D9;
+  box-shadow: 0 10px 25px rgba(163, 0, 217, 0.25);
+}
+
+.cert-ai .cert-icon-fa {
+  color: #A300D9;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+/* 3. freeCodeCamp brand icon styling */
+.cert-card .fa-free-code-camp {
+  background: linear-gradient(135deg, #0A0A23 0%, #1A1A3A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Cert Badges */
+.cert-badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.security-badge {
+  background: rgba(243, 156, 18, 0.15);
+  color: #F39C12;
+  border: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.dev-badge {
+  background: rgba(46, 204, 113, 0.15);
+  color: #2ECC71;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.ai-badge {
+  background: rgba(163, 0, 217, 0.15);
+  color: #D68DFF;
+  border: 1px solid rgba(163, 0, 217, 0.3);
+}
+
+.design-badge {
+  background: rgba(52, 152, 219, 0.15);
+  color: #3498DB;
+  border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+.product-badge {
+  background: rgba(155, 89, 182, 0.15);
+  color: #9B59B6;
+  border: 1px solid rgba(155, 89, 182, 0.3);
+}
+
+.tools-badge {
+  background: rgba(149, 165, 166, 0.15);
+  color: #BDC3C7;
+  border: 1px solid rgba(149, 165, 166, 0.3);
 }
 .cert-icon-fa {
   font-size: 2.2rem;
