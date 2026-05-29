@@ -226,21 +226,18 @@ section {
 }
 
 .profile-pic {
-  width: 350px;
-  height: 450px;
+  width: 340px;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 20px;
   border: 5px solid rgba(74, 144, 226, 0.5);
   box-shadow: 0 25px 50px rgba(0,0,0,0.4);
   transition: all 0.5s ease;
-  position: absolute;
-  right: 5%;
-  top: 50%;
-  transform: translateY(-50%);
+  margin-left: auto;
 }
 
 .profile-pic:hover {
-  transform: translateY(-50%) scale(1.08);
+  transform: scale(1.05);
   box-shadow: 0 35px 70px rgba(0,0,0,0.5);
 }
 
@@ -294,6 +291,40 @@ h2::after {
 /* ========================================
    7. Skills
    ======================================== */
+.skills-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+
+.tab-btn {
+  background: rgba(26, 32, 44, 0.7);
+  border: 1px solid rgba(240, 244, 248, 0.1);
+  color: var(--gray);
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-btn:hover {
+  background: rgba(74, 144, 226, 0.1);
+  color: var(--light);
+  border-color: rgba(74, 144, 226, 0.3);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+}
+
 .skills-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -306,7 +337,11 @@ h2::after {
   padding: 2rem 1rem;
   text-align: center;
   border-radius: 0.75rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-box.hidden {
+  display: none !important;
 }
 
 .skill-box:hover {
@@ -822,10 +857,6 @@ footer {
   }
 
   .profile-pic {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
     margin: 2rem auto;
   }
 
@@ -884,11 +915,6 @@ footer {
 
   .profile-pic {
     max-width: 45vw;
-    height: auto;
-    top: auto;
-    right: auto;
-    position: relative;
-    transform: none;
     display: block;
     margin: 2rem auto;
   }

@@ -94,6 +94,45 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(typeWriter, 1000);
   }
 
+  // Skills Category Filtering
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const skillBoxes = document.querySelectorAll('.skill-box');
+
+  if (tabBtns.length > 0 && skillBoxes.length > 0) {
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons and add to the clicked one
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.getAttribute('data-category');
+
+        // Step 1: Smoothly fade out all visible skill boxes
+        skillBoxes.forEach(box => {
+          box.style.opacity = '0';
+          box.style.transform = 'translateY(15px) scale(0.95)';
+          box.style.transition = 'opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+
+        // Step 2: Swap the display states and fade the active ones back in
+        setTimeout(() => {
+          skillBoxes.forEach(box => {
+            const boxCategory = box.getAttribute('data-category');
+            if (category === 'all' || boxCategory === category) {
+              box.classList.remove('hidden');
+              // Trigger a browser layout recalculation/reflow to apply the transition
+              void box.offsetWidth;
+              box.style.opacity = '1';
+              box.style.transform = 'translateY(0) scale(1)';
+            } else {
+              box.classList.add('hidden');
+            }
+          });
+        }, 250);
+      });
+    });
+  }
+
   // Initialize particles.js safely (using addEventListener)
   window.addEventListener('load', function() {
     if (typeof particlesJS !== 'undefined') {
