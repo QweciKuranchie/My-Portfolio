@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://qwecikuranchie.github.io/My-Portfolio/sitemap.xml
+Sitemap: https://richardnuhu.dev/sitemap.xml
