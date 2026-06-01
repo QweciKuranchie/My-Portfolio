@@ -324,8 +324,9 @@ document.addEventListener('DOMContentLoaded', function() {
         showToast(errText, 'error');
       }
 
-      // Check if Formspree action contains a real endpoint ID
-      const isRealEndpoint = action && action.startsWith('http') && !action.includes('your_id_here');
+      // Check if Formspree action contains a real endpoint ID and we are not in a local testing environment
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const isRealEndpoint = action && action.startsWith('http') && !action.includes('your_id_here') && !isLocalhost;
 
       if (isRealEndpoint) {
         const formData = new FormData(contactForm);
