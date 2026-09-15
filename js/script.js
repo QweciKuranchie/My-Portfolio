@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
           skillBoxes.forEach(box => {
             const boxCategory = box.getAttribute('data-category');
-            if (category === 'all' || boxCategory === category) {
+            if (boxCategory === category) {
               box.classList.remove('hidden');
               // Trigger a browser layout recalculation/reflow to apply the transition
               void box.offsetWidth;
