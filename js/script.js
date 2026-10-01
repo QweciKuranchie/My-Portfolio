@@ -1,4 +1,55 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Portfolio Preloader / Loading State Logic
+  const preloader = document.getElementById('preloader');
+  const progressBar = document.getElementById('preloader-progress');
+
+  if (preloader) {
+    let isHidden = false;
+
+    function hidePreloader() {
+      if (isHidden) return;
+      isHidden = true;
+
+      if (progressBar) progressBar.style.width = '100%';
+
+      setTimeout(() => {
+        preloader.classList.add('fade-out');
+        document.body.classList.remove('loading-locked');
+
+        setTimeout(() => {
+          preloader.style.display = 'none';
+          if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+          }
+        }, 600);
+      }, 300);
+    }
+
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+      if (progress < 90) {
+        progress += Math.floor(Math.random() * 15) + 5;
+        if (progress > 90) progress = 90;
+        if (progressBar) progressBar.style.width = progress + '%';
+      }
+    }, 80);
+
+    if (document.readyState === 'complete') {
+      clearInterval(progressInterval);
+      hidePreloader();
+    } else {
+      window.addEventListener('load', () => {
+        clearInterval(progressInterval);
+        hidePreloader();
+      });
+    }
+
+    setTimeout(() => {
+      clearInterval(progressInterval);
+      hidePreloader();
+    }, 2500);
+  }
+
   // Initialize AOS safely (prevents halting execution if CDN fails or is offline)
   if (typeof AOS !== 'undefined') {
     AOS.init({
