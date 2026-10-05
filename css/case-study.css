@@ -1,0 +1,270 @@
+/* ========================================
+   Case Study pages
+   Builds on css/styles.css tokens (--primary, --dark, --gray, etc.)
+   ======================================== */
+
+.cs-nav .nav-links a.cs-back {
+  color: var(--primary-light);
+}
+
+.cs-main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + 3rem) 5% 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero */
+.cs-hero {
+  margin-bottom: 3rem;
+}
+
+.cs-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  background: rgba(74, 144, 226, 0.12);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  padding: 0.3rem 0.9rem;
+  border-radius: 50px;
+  margin-bottom: 1.25rem;
+}
+
+.cs-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.cs-hero h1 span {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cs-lead {
+  font-size: 1.15rem;
+  color: var(--gray);
+  max-width: 720px;
+}
+
+/* Key facts strip */
+.cs-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+
+.cs-fact {
+  background: rgba(26, 32, 44, 0.7);
+  border: 1px solid rgba(240, 244, 248, 0.15);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+}
+
+.cs-fact dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  margin-bottom: 0.25rem;
+}
+
+.cs-fact dd {
+  font-weight: 600;
+  color: var(--light);
+}
+
+/* Sections */
+.cs-section {
+  margin-bottom: 3.5rem;
+}
+
+.cs-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.cs-section h3 {
+  font-size: 1.15rem;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--primary-light);
+}
+
+.cs-section p {
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+.cs-section p strong,
+.cs-section li strong {
+  color: var(--light);
+}
+
+.cs-list {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cs-list li {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 2.75rem;
+  background: rgba(26, 32, 44, 0.7);
+  border: 1px solid rgba(240, 244, 248, 0.12);
+  border-radius: 0.75rem;
+  color: var(--gray);
+}
+
+.cs-list li::before {
+  content: '';
+  position: absolute;
+  left: 1.1rem;
+  top: 1.45rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.6);
+}
+
+/* Figures */
+.cs-figure {
+  margin: 1.5rem 0;
+}
+
+.cs-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(240, 244, 248, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.cs-figure figcaption {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+.cs-diagram {
+  background: rgba(26, 32, 44, 0.7);
+  border: 1px solid rgba(240, 244, 248, 0.15);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.cs-diagram pre {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: var(--primary-light);
+  line-height: 1.5;
+}
+
+/* Tech chips */
+.cs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.cs-chips span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--primary-light);
+  background: rgba(74, 144, 226, 0.12);
+  border: 1px solid rgba(74, 144, 226, 0.25);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cs-chips span:hover {
+  background: rgba(74, 144, 226, 0.25);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Comparison table */
+.cs-table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(240, 244, 248, 0.15);
+  border-radius: 0.75rem;
+  background: rgba(26, 32, 44, 0.7);
+}
+
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+}
+
+.cs-table th,
+.cs-table td {
+  text-align: left;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid rgba(240, 244, 248, 0.08);
+}
+
+.cs-table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary-light);
+  background: rgba(74, 144, 226, 0.08);
+}
+
+.cs-table td {
+  color: var(--gray);
+}
+
+.cs-table td:first-child {
+  color: var(--light);
+  font-weight: 500;
+}
+
+.cs-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Callout used for items still to be filled in */
+.cs-todo {
+  border: 1px dashed rgba(243, 156, 18, 0.6);
+  background: rgba(243, 156, 18, 0.08);
+  color: #F5B94F;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* Footer links */
+.cs-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cs-cta .btn-outline {
+  margin-left: 0;
+}
+
+@media (max-width: 576px) {
+  .cs-main {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .cs-cta {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>U-Shop Case Study | Richard Nuhu</title>
+  <meta name="description" content="Case study: U-Shop, a peer-to-peer tech marketplace for university students in Ghana. Planning, architecture, and build decisions by Richard Nuhu.">
+  <link rel="canonical" href="https://richardnuhu.dev/case-study-ushop.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="U-Shop Case Study | Richard Nuhu">
+  <meta property="og:description" content="A peer-to-peer tech marketplace for university students in Ghana: planning, architecture and build decisions.">
+  <meta property="og:image" content="https://richardnuhu.dev/asset/Richard 1.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="asset/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/case-study.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <div class="bg-wrapper">
+    <div class="bg-gradient"></div>
+    <div class="bg-pattern"></div>
+    <div class="bg-shapes">
+      <div class="bg-shape bg-shape-1"></div>
+      <div class="bg-shape bg-shape-2"></div>
+      <div class="bg-shape bg-shape-3"></div>
+    </div>
+  </div>
+
+  <nav class="cs-nav" aria-label="Main navigation">
+    <div class="nav-logo"><a href="index.html">Richard</a></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#portfolio" class="cs-back">&larr; Back to Portfolio</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+  </nav>
+
+  <main id="main-content" class="cs-main">
+
+    <header class="cs-hero">
+      <span class="cs-eyebrow">Case Study</span>
+      <h1><span>U-Shop</span>: a tech marketplace built for Ghanaian students</h1>
+      <p class="cs-lead">A consumer-to-consumer marketplace where university students in Ghana can buy and sell tech, designed and documented end to end before and during the build.</p>
+
+      <dl class="cs-facts">
+        <div class="cs-fact"><dt>Status</dt><dd>V1 in development</dd></div>
+        <div class="cs-fact"><dt>My role</dt><dd>Product, design &amp; engineering</dd></div>
+        <div class="cs-fact"><dt>Audience</dt><dd>University students, Ghana</dd></div>
+        <div class="cs-fact"><dt>Domain</dt><dd>ushopgh.com</dd></div>
+      </dl>
+    </header>
+
+    <section class="cs-section" aria-labelledby="problem">
+      <h2 id="problem">The Problem</h2>
+      <p>Students buy and sell laptops, phones and accessories constantly, but they mostly do it through scattered social posts and word of mouth. That makes it hard to find what you need, hard to trust who you are dealing with, and hard to pay safely.</p>
+      <ul class="cs-list">
+        <li><strong>No dedicated place:</strong> listings are spread across chats and feeds with no consistent structure.</li>
+        <li><strong>Trust:</strong> buyers and sellers have little way to confirm who the other person is.</li>
+        <li><strong>Payments:</strong> mobile money is how people actually pay in Ghana, so a marketplace has to treat it as a first-class option.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="approach">
+      <h2 id="approach">My Approach</h2>
+      <p>I treated U-Shop as a product first and a codebase second. Before writing production code I produced a full documentation set, then moved into building with the live code as the source of truth.</p>
+
+      <h3>Planning &amp; documentation</h3>
+      <div class="cs-chips">
+        <span>Product Requirements (PRD)</span>
+        <span>System Requirements (SRD)</span>
+        <span>System Architecture (SAD)</span>
+        <span>Design System</span>
+        <span>Decisions Workbook</span>
+        <span>Pitch Deck</span>
+      </div>
+
+      <h3>Market research</h3>
+      <p>I benchmarked the product against Jumia Ghana's live platform to understand which marketplace features users already expect, then used that to decide what belongs in V1 and what waits.</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="scope">
+      <h2 id="scope">V1 Scope</h2>
+      <p>Keeping V1 small was a deliberate decision. Here is what ships first and what I pushed out on purpose.</p>
+      <div class="cs-table-wrap">
+        <table class="cs-table">
+          <thead>
+            <tr><th scope="col">Area</th><th scope="col">In V1</th><th scope="col">Deferred to V2</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sellers</td><td>Personal, Business (admin-approved) and Student (university email verification) tiers</td><td>Premium membership</td></tr>
+            <tr><td>Payments</td><td>Mobile Money and card, with two providers in parallel</td><td>Wallet &amp; fund management, Stripe</td></tr>
+            <tr><td>Engagement</td><td>Reviews and notification broadcasts</td><td>Reward points &amp; loyalty, in-app messaging, push notifications</td></tr>
+            <tr><td>Admin</td><td>KPI overview, sales analytics, order, product and user management, moderation, newsletters</td><td>Invoice generation, employee management</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="stack">
+      <h2 id="stack">Technologies Used</h2>
+      <div class="cs-chips">
+        <span>Next.js 16</span>
+        <span>React 19</span>
+        <span>Tailwind CSS v4</span>
+        <span>Sanity v5</span>
+        <span>Clerk</span>
+        <span>Hubtel</span>
+        <span>Paystack</span>
+        <span>Recharts</span>
+        <span>PWA</span>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="decisions">
+      <h2 id="decisions">Key Technical &amp; Product Decisions</h2>
+      <ul class="cs-list">
+        <li><strong>Live code over documents:</strong> once coding began, I made the codebase the source of truth. Earlier specs had drifted from reality, and keeping two versions of the truth costs more than it saves.</li>
+        <li><strong>Managed auth and content services:</strong> the stack moved to Clerk for authentication and Sanity for content, so effort goes into the marketplace itself rather than rebuilding commodity infrastructure.</li>
+        <li><strong>Two payment providers in parallel:</strong> Hubtel for Mobile Money and Paystack for card and MoMo, because that is how students actually pay.</li>
+        <li><strong>Defer payments implementation:</strong> I postponed the gateway work so the rest of the remediation plan could keep moving without being blocked on integrations.</li>
+        <li><strong>Lightweight student verification:</strong> a university email domain check only, with no ID upload in V1, to keep sign-up friction low.</li>
+        <li><strong>Installable PWA:</strong> a good fit for a mobile-heavy audience.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="design">
+      <h2 id="design">Design System</h2>
+      <p>A written design system keeps the interface consistent: the Plus Jakarta Sans typeface, a full color scale, semantic colors for order states, and CSS variables compatible with shadcn/ui. The brand palette is built around red, deep purple and magenta.</p>
+      <div class="cs-chips" aria-label="Brand colors">
+        <span style="border-color:#FF0000;color:#ff7a7a;">Red #FF0000</span>
+        <span style="border-color:#5D1A89;color:#c79bea;">Deep Purple #5D1A89</span>
+        <span style="border-color:#D1148A;color:#f58bc9;">Magenta #D1148A</span>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="learnings">
+      <h2 id="learnings">Challenges &amp; Learnings</h2>
+      <ul class="cs-list">
+        <li><strong>Plans change:</strong> the architecture went through several revisions as I learned more, so I recorded decisions and their reasons as I went.</li>
+        <li><strong>Scope discipline:</strong> a marketplace has endless features; a written in-scope and out-of-scope list was the best defense against creep.</li>
+        <li><strong>Documentation has a shelf life:</strong> treating code as the source of truth after the build started removed a whole class of confusion.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="links">
+      <h2 id="links">Links</h2>
+      <div class="cs-cta">
+        <a href="https://github.com/QweciKuranchie/UShop" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> View Repository</a>
+        <a href="index.html#portfolio" class="btn btn-outline">&larr; Back to Portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://x.com/QwesiKuranchie" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+      <a href="https://www.instagram.com/QweciKuranchie" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      <a href="https://linkedin.com/in/richard-nuhu" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+      <a href="https://github.com/QweciKuranchie" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+    </div>
+    <p class="copyright">&copy; 2026 Richard Nuhu. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.querySelector('.mobile-menu-btn');
+      var links = document.querySelector('.nav-links');
+      if (!btn || !links) return;
+      btn.addEventListener('click', function () { links.classList.toggle('active'); });
+      links.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') links.classList.remove('active');
+      });
+    })();
+  </script>
+</body>
+</html>
